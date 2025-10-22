@@ -1,0 +1,35 @@
+/*!
+ * © 2025 חומוס גרגירים (Hummus Gargririm). All rights reserved.
+ * License: Proprietary. This build and its assets are the intellectual property of חומוס גרגירים.
+ * Unauthorized copying or distribution is strictly prohibited.
+ */
+:root{
+  --bg:#0B0B0B;
+  --gold:#D4AF37;
+  --accent:#E67E22;
+  --text:#F8F8F8;
+  --subtle:#b59d5b;
+}
+*{font-family: 'Poppins','Cairo',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif}
+.card{
+  background: linear-gradient(180deg, rgba(25,25,25,.85), rgba(10,10,10,.85));
+  border: 1.5px solid var(--subtle);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 25px rgba(212,175,55,0.15);
+}
+.btn{
+  background: linear-gradient(135deg, var(--gold), var(--accent));
+  color: #0b0b0b;
+  border-radius:9999px;
+  padding:.6rem 1.1rem;
+  font-weight:600;
+  box-shadow: 0 10px 25px rgba(212,175,55,0.25);
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  transition: transform .15s ease;
+}
+.btn:hover{ transform: scale(1.02); }
+.btn:active{ transform: scale(0.97); }
+.glow-gold{ text-shadow: 0 0 22px rgba(212,175,55,.35); }
+.border-subtle{ border-color: rgba(181,157,91,.25); }
