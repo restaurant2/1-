@@ -1,347 +1,281 @@
-
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="he" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>חומוס גרגירים – Menu</title>
-  <style>
-    :root{ --accent:#ff7a00; --bg:#fff; --text:#000; --muted:rgba(0,0,0,.6); --border:rgba(0,0,0,.1);}
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    .container{max-width:1120px;margin:0 auto;padding:0 16px}
-    header.sticky{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
-    .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand-badge{width:42px;height:42px;border-radius:12px;background:var(--accent);overflow:hidden;display:flex;align-items:center;justify-content:center}
-    .brand-badge img{width:100%;height:100%;object-fit:contain;border-radius:12px;background:#ff7a00}
-    .brand-name{font-weight:800;font-size:20px;letter-spacing:.2px;color:var(--accent)}
-    nav a{margin-inline:10px;text-decoration:none;color:var(--text)}
-    nav .btn{padding:10px 14px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600}
-    .lang-btn{padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:#fff;cursor:pointer}
-    .lang-btn:hover{background:rgba(0,0,0,.05)}
-    .hero-grad{background:linear-gradient(135deg,var(--accent) 0%,#000 100%);color:#fff}
-    .hero{padding:64px 0}
-    .hero h1{font-size:40px;margin:0 0 8px 0}
-    .hero p{opacity:.95;font-size:18px;max-width:680px;margin:0 0 20px 0}
-    .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .chip{border-radius:18px;padding:12px 16px;border:1px solid var(--border);background:#fff;color:#000;text-decoration:none;font-weight:700}
-    .chip-acc{border-radius:18px;padding:12px 16px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700}
-    section{padding:56px 0}
-    h2.section-title{color:var(--accent);font-size:28px;margin:0 0 16px 0}
-    .sections{display:grid;gap:28px}
-    .menu-section{border:1px solid var(--border);border-radius:16px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.04)}
-    .menu-section-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border)}
-    .menu-list{padding:8px 16px}
-    .menu-item{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--border)}
-    .menu-item:last-child{border-bottom:none}
-    .item-name{font-weight:700}
-    .item-price{font-weight:800;white-space:nowrap}
-    @media(min-width:960px){.sections{grid-template-columns:1fr 1fr}}
-    .about{background:rgba(0,0,0,.02);border-top:1px solid var(--border)}
-    .cols{display:grid;gap:28px}
-    @media(min-width:900px){.cols{grid-template-columns: 1fr 1fr}}
-    .list{border:1px solid var(--border);border-radius:16px;overflow:hidden}
-    .list li{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#fff;border-top:1px solid var(--border)}
-    .list li:first-child{border-top:none}
-    footer{border-top:1px solid var(--border);text-align:center;padding:18px 0}
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:16px;z-index:60}
-    .dialog{max-width:520px;width:100%;background:#fff;border-radius:16px;padding:18px;box-shadow:0 8px 28px rgba(0,0,0,.28)}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .btn{padding:12px;border:1px solid var(--border);border-radius:12px;background:#fff;cursor:pointer;font-size:18px}
-    .btn:hover{box-shadow:0 6px 14px rgba(0,0,0,.1)}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>חומוס גרגירים</title>
+<style>
+:root{
+  --orange:#ff7a00; --gold:#c5a13e; --black:#000; --white:#fff; --blue:#00AEEF;
+  --muted: #666;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--white);color:#111;line-height:1.4}
+header{background:var(--black);border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:60}
+.topbar{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:12px}
+.lang-btn{background:var(--white);border:2px solid var(--orange);padding:8px 12px;border-radius:20px;cursor:pointer;font-weight:700}
+.brand-name{flex:1;text-align:center;color:var(--orange);font-weight:800;font-size:1.6rem}
+.wolt-btn{background:var(--blue);color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:800;display:inline-block}
+main{max-width:1200px;margin:28px auto;padding:0 16px}
+h2.section-title{color:var(--orange);font-size:1.2rem;margin:24px 0;border-bottom:2px solid var(--gold);padding-bottom:8px;text-align:right}
+.menu-section{border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:8px;margin-bottom:18px;background:#fff}
+.menu-item{display:flex;justify-content:space-between;padding:8px 10px;border-bottom:1px dashed rgba(0,0,0,.06);align-items:center}
+.menu-item:last-child{border-bottom:none}
+.small{font-size:0.95rem;color:var(--muted)}
+.about, .hours{margin-top:8px;padding:12px;border-radius:10px;background:#fafafa;border:1px solid rgba(0,0,0,.04)}
+.footer{background:var(--black);color:var(--gold);text-align:center;padding:16px;font-weight:700}
+.footer a{color:var(--gold);text-decoration:none}
+
+/* modal */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:120}
+.dialog{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border-radius:14px;padding:18px;z-index:130;min-width:300px;max-width:90%;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.dialog h3{text-align:center;margin:0 0 12px;color:var(--black)}
+.lang-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.lang-choice{padding:10px;border-radius:8px;border:2px solid var(--orange);text-align:center;cursor:pointer;font-weight:700}
+.lang-choice:hover{background:var(--orange);color:#fff}
+
+/* responsive */
+@media(max-width:720px){
+  .brand-name{font-size:1.2rem}
+  .wolt-btn{padding:8px 12px}
+  .lang-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
 </head>
 <body>
-  <header class="sticky" id="top">
-    <div class="container topbar">
-      <div class="brand">
-        <div class="brand-badge"><img src="data:image/png;base64,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" alt="חומוס גרגירים Logo"/></div>
-        <div class="brand-name" id="brandName">חומוס גרגירים</div>
-      </div>
-      <nav class="hide-mobile">
-        <a href="#home" id="navHome">الرئيسية</a>
-        <a href="#menu" id="navMenu">القائمة</a>
-        <a class="btn" href="#" id="navOrder" target="_blank" rel="noreferrer">طلب طعام</a>
-        <a href="#about" id="navAbout">من نحن</a>
-      </nav>
-      <button class="lang-btn" id="langBtn" title="تغيير اللغة">🌐 العربية</button>
-    </div>
-  </header>
-
-  <section id="home" class="hero-grad">
-    <div class="container hero">
-      <h1 id="heroTitle">حُمُّص גרגירים</h1>
-      <p id="heroSubtitle">مطعم سريع يُقدم أكثر من عشرة أصناف لذيذة مع توصيل إلى أي مكان.</p>
-      <div class="cta">
-        <a class="chip" href="#menu" id="ctaMenu">القائمة</a>
-        <a class="chip-acc" href="#" target="_blank" rel="noreferrer" id="ctaOrder">اذهب لطلب الطعام</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="menu">
-    <div class="container">
-      <h2 class="section-title" id="menuHeader">القائمة</h2>
-      <div class="sections" id="sections"></div>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <div class="container cols">
-      <div>
-        <h2 class="section-title" id="aboutHeader">من نحن وموقع المطعم</h2>
-        <p id="aboutText">يوفر لك مطعمنا أكلات سريعة وطازجة مع خدمة توصيل. تجدنا في تل أبيب.</p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
-          <a class="btn" id="mapLink" href="https://maps.app.goo.gl/3nfkX5F877Xcjy5o7" target="_blank" rel="noreferrer">📍 موقع المطعم على الخريطة</a>
-          <a class="btn" id="phoneLink" href="tel:035366667">☎️ اتصال: 035366667</a>
-        </div>
-      </div>
-      <div>
-        <h2 class="section-title" id="hoursTitle">ساعات العمل</h2>
-        <ul class="list" id="hoursList"></ul>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container"><span id="footerText">© حُمُّص גרגירים</span></div>
-  </footer>
-
-  <div class="modal" id="langModal" style="display:none">
-    <div class="dialog">
-      <h3 style="text-align:center;margin:0 0 12px 0">Choose language / اختر لغة / בחרו שפה / Выберите язык</h3>
-      <div class="grid-2">
-        <button class="btn" data-lang="ar">العربية</button>
-        <button class="btn" data-lang="he">עברית</button>
-        <button class="btn" data-lang="en">English</button>
-        <button class="btn" data-lang="ru">Русский</button>
-      </div>
-    </div>
+<header>
+  <div class="topbar">
+    <button id="langBtn" class="lang-btn">🌐 שפה</button>
+    <div class="brand-name" id="brandName">חומוס גרגירים</div>
+    <a id="woltBtn" class="wolt-btn" target="_blank" rel="noreferrer">Wolt</a>
   </div>
+</header>
 
-  <script>
-    const ORDER_URL = "https://wolt.com/he/isr/tel-aviv/restaurant/hummus-gargerim?utm_source=googlemapreserved&utm_campaign=hummus-gargerim&utm_content=64ae8b9b04e67c0d9c4caaa6&rwg_token=ACgRB3e3AEvanF_rf0aocU0TZqf-A0bXcjBDAMHo0uH5Qnr0ThUuNAwovlcu_ifLs-Ciqhk84FvJysHJSlknjposiHsWGfWYdXJTmUMkLgbkZ5fIGKYBXQQ%3D";
-    const MAPS_URL = "https://maps.app.goo.gl/3nfkX5F877Xcjy5o7";
-    const ICONS = { plates:"🍽️", pita:"🥙", baguette:"🥖", extras:"🍟", drinks:"🥤" };
+<main id="content">
+  <!-- content injected by JS -->
+</main>
 
-    const T = {
-      ar: { label:"العربية", dir:"rtl",
-        nav:{ home:"الرئيسية", menu:"القائمة", order:"طلب طعام", about:"من نحن" },
-        heroTitle:"حُمُّص גרגירים",
-        heroSubtitle:"مطعم سريع يُقدم أكثر من عشرة أصناف لذيذة مع توصيل إلى أي مكان.",
-        menuHeader:"القائمة", orderNow:"اذهب لطلب الطعام",
-        aboutHeader:"من نحن وموقع المطعم",
-        aboutText:"يوفر لك مطعمنا أكلات سريعة وطازجة مع خدمة توصيل. تجدنا في تل أبيب.",
-        address:"موقع المطعم على الخريطة", phone:"اتصال: 035366667",
-        hoursTitle:"ساعات العمل",
-        days:["الأحد","الإثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],
-        hoursRange:"10:00 ص – 1:00 ص",
-        footer:"© حُمُّص גרגירים",
-        brand:"חומוס גרגירים",
-        sections:{ plates:"في الصحون", pita:"في البيتا", baguette:"باجيت", extras:"إضافات", drinks:"مشروبات" },
-      },
-      he: { label:"עברית", dir:"rtl",
-        nav:{ home:"ראשי", menu:"תפריט", order:"הזמנת אוכל", about:"מי אנחנו" },
-        heroTitle:"חומוס גרגירים",
-        heroSubtitle:"מסעדת מזון מהיר עם יותר מעשרה סוגים, ומשלוחים לכל מקום.",
-        menuHeader:"תפריט", orderNow:"לדף ההזמנה",
-        aboutHeader:"מי אנחנו והמיקום",
-        aboutText:"אנחנו מגישים אוכל מהיר וטרי. מחכים לכם בת״א.",
-        address:"פתיחת המיקום במפה", phone:"טלפון: 035366667",
-        hoursTitle:"שעות פעילות",
-        days:["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"],
-        hoursRange:"10:00–01:00",
-        footer:"© חומוס גרגירים",
-        brand:"חומוס גרגירים",
-        sections:{ plates:"בצלחות", pita:"בפיתה", baguette:"בגט", extras:"תוספות", drinks:"שתייה" },
-      },
-      en: { label:"English", dir:"ltr",
-        nav:{ home:"Home", menu:"Menu", order:"Order Now", about:"About" },
-        heroTitle:"Hummus Gargerim",
-        heroSubtitle:"Fast, fresh food with 10+ varieties. Delivery anywhere in the city.",
-        menuHeader:"Menu", orderNow:"Go to ordering page",
-        aboutHeader:"About & Location",
-        aboutText:"We serve quick, fresh dishes and deliver anywhere. Find us in Tel Aviv.",
-        address:"Open location in Maps", phone:"Phone: 035366667",
-        hoursTitle:"Opening Hours",
-        days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-        hoursRange:"10:00 AM – 1:00 AM",
-        footer:"© Hummus Gargerim",
-        brand:"Hummus Gargerim",
-        sections:{ plates:"Plates", pita:"In Pita", baguette:"Baguette", extras:"Extras", drinks:"Drinks" },
-      },
-      ru: { label:"Русский", dir:"ltr",
-        nav:{ home:"Главная", menu:"Меню", order:"Заказать", about:"О нас" },
-        heroTitle:"Хумус Гаргерим",
-        heroSubtitle:"Быстрая свежая еда. Доставка по всему городу.",
-        menuHeader:"Меню", orderNow:"Перейти к заказу",
-        aboutHeader:"О нас и как нас найти",
-        aboutText:"Готовим быстро и вкусно, доставляем куда угодно. Мы в Тель-Авиве.",
-        address:"Открыть локацию в картах", phone:"Телефон: 035366667",
-        hoursTitle:"Часы работы",
-        days:["Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота"],
-        hoursRange:"10:00 – 01:00",
-        footer:"© Хумус Гаргерим",
-        brand:"Хумус Гаргерим",
-        sections:{ plates:"Блюда на тарелке", pita:"В пите", baguette:"Багет", extras:"Добавки", drinks:"Напитки" },
-      },
-    };
+<footer class="footer">
+  <a id="discordLink" href="https://discord.gg/rfhQ4spF33" target="_blank">© 2025 חומוס גרגירים – All Rights Reserved</a>
+</footer>
 
-    const MENU = [
-      { key:"plates", items:[
-        { he:"חומוס גרגרים", ar:"حمص גרגירים", en:"Hummus Gargerim", ru:"Хумус Гаргерим", price:"30₪" },
-        { he:"חומוס פול", ar:"حمص فول", en:"Hummus with Fava Beans", ru:"Хумус с бобами фава", price:"30₪" },
-        { he:"משולש (חומוס+פול+מסבחה)", ar:"مثلث (حمص+فول+مسابحة)", en:"Combo (Hummus+Fava+Msabaha)", ru:"Комбо (хумус+фава+мсабаха)", price:"30₪" },
-        { he:"מסבחה", ar:"مسابحة", en:"Msabaha", ru:"Мсабаха", price:"30₪" },
-        { he:"חומוס פטריות", ar:"حمص بالفطر", en:"Hummus with Mushrooms", ru:"Хумус с грибами", price:"36₪" },
-        { he:"חומוס בשר", ar:"حمص باللحم", en:"Hummus with Meat", ru:"Хумус с мясом", price:"48₪" },
-        { he:"שקשוקה (כולל 2 ביצים)", ar:"شكشوكة (يشمل 2 بيض)", en:"Shakshuka (incl. 2 eggs)", ru:"Шакшука (2 яйца)", price:"43₪" },
-        { he:"חביתה (כולל חומוס)", ar:"عجة (يشمل حمص)", en:"Omelette (incl. hummus)", ru:"Омлет (с хумусом)", price:"34₪" },
-        { he:"קבב", ar:"كباب", en:"Kebab", ru:"Кебаб", price:"60₪" },
-        { he:"חזה עוף", ar:"صدر دجاج", en:"Chicken Breast", ru:"Куриная грудка", price:"55₪" },
+<div class="overlay" id="overlay"></div>
+<div class="dialog" id="langDialog" role="dialog" aria-modal="true" aria-hidden="true">
+  <h3>בחרו שפה / اختر لغة / Choose language / Выберите язык</h3>
+  <div class="lang-grid">
+    <div class="lang-choice" data-lang="he">🇮🇱 עברית</div>
+    <div class="lang-choice" data-lang="ar">🇸🇦 العربية</div>
+    <div class="lang-choice" data-lang="en">🇬🇧 English</div>
+    <div class="lang-choice" data-lang="ru">🇷🇺 Русский</div>
+  </div>
+</div>
+
+<script>
+/* --- Data: translations for four languages --- */
+const DATA = {
+  he: {
+    brand: "חומוס גרגירים",
+    woltText: "Wolt",
+    sections: [
+      { title: "🍽️ בצלחות", items: [
+        ["חומוס גרגרים","30₪"],["חומוס פול","30₪"],["משולש (חומוס+פול+מסבחה)","30₪"],["מסבחה","30₪"],
+        ["חומוס פטריות","36₪"],["חומוס בשר","48₪"],["שקשוקה (כולל 2 ביצים)","43₪"],["חביתה (כולל חומוס)","34₪"],
+        ["קבב","60₪"],["חזה עוף","55₪"]
       ]},
-      { key:"pita", items:[
-        { he:"פלאפל", ar:"فلافل", en:"Falafel", ru:"Фалафель", price:"20₪" },
-        { he:"שקשוקה", ar:"شكشوكة", en:"Shakshuka", ru:"Шакшука", price:"25₪" },
-        { he:"חביתה", ar:"عجة", en:"Omelette", ru:"Омлет", price:"25₪" },
-        { he:"מסבחה", ar:"مسابحة", en:"Msabaha", ru:"Мсабаха", price:"20₪" },
-        { he:"פול", ar:"فول", en:"Fava Beans", ru:"Бобы фава", price:"20₪" },
-        { he:"חומוס", ar:"حمص", en:"Hummus", ru:"Хумус", price:"20₪" },
-        { he:"שניצל", ar:"شنسل", en:"Schnitzel", ru:"Шницель", price:"30₪" },
-        { he:"קבב", ar:"كباب", en:"Kebab", ru:"Кебаб", price:"35₪" },
-        { he:"פיתה חריפות", ar:"بيتا حارة", en:"Spicy Pita", ru:"Острая пита", price:"30₪" },
-        { he:"פיתה מעורב", ar:"بيتا مكس", en:"Mixed Pita", ru:"Пита ассорти", price:"30₪" },
-        { he:"פיתה חזה עוף", ar:"بيتا صدر دجاج", en:"Chicken Breast Pita", ru:"Пита с куриной грудкой", price:"30₪" },
-        { he:"פיתה פרגית", ar:"بيتا فخذ دجاج (פרגית)", en:"Chicken Thigh Pita (Pargit)", ru:"Пита с кур. бедром (паргит)", price:"30₪" },
+      { title: "🍱 עסקית", items: [
+        ["צלחת חומוס עם ציפס פלאפל וקולה","30₪ | עד שעה חמש"]
       ]},
-      { key:"baguette", items:[
-        { he:"בגט חריפות מרגז", ar:"باجيت سجق حار (מרגז)", en:"Spicy Merguez Baguette", ru:"Багет с острой мергез", price:"40₪" },
-        { he:"בגט שניצל", ar:"باجيت شنسل", en:"Schnitzel Baguette", ru:"Багет со шницелем", price:"40₪" },
-        { he:"בגט מעורב", ar:"باجيت مكس", en:"Mixed Baguette", ru:"Багет ассорти", price:"40₪" },
-        { he:"בגט קבב", ar:"باجيت كباب", en:"Kebab Baguette", ru:"Багет с кебабом", price:"45₪" },
-        { he:"בגט חזה עוף", ar:"باجيت صدر دجاج", en:"Chicken Breast Baguette", ru:"Багет с куриной грудкой", price:"40₪" },
-        { he:"בגט פרגית", ar:"باجيت فخذ دجاج (פרגית)", en:"Chicken Thigh Baguette (Pargit)", ru:"Багет с кур. бедром (паргит)", price:"40₪" },
+      { title: "🥙 בפיתה", items: [
+        ["פלאפל","20₪"],["שקשוקה","25₪"],["חביתה","25₪"],["מסבחה","20₪"],["פול","20₪"],["חומוס","20₪"],
+        ["שניצל","30₪"],["קבב","35₪"],["פיתה חריפות","30₪"],["פיתה מעורב","30₪"],["פיתה חזה עוף","30₪"],["פיתה פרגית","30₪"]
       ]},
-      { key:"extras", items:[
-        { he:"ציפס קטן", ar:"بطاطس مقلية صغيرة", en:"Small Fries", ru:"Картофель фри (мал.)", price:"20₪" },
-        { he:"ציפס גדול", ar:"بطاطس مقلية كبيرة", en:"Large Fries", ru:"Картофель фри (бол.)", price:"28₪" },
-        { he:"סלט ירקות", ar:"سلطة خضار", en:"Vegetable Salad", ru:"Овощной салат", price:"20₪" },
-        { he:"ביצה", ar:"بيضة", en:"Egg", ru:"Яйцо", price:"4₪" },
-        { he:"כדורי פלאפל (5 יחידות)", ar:"كرات فلافل (5 قطع)", en:"Falafel Balls (5 pcs)", ru:"Шарики фалафеля (5 шт)", price:"10₪" }
+      { title: "🥖 בגט", items: [
+        ["בגט חריפות מרגז","40₪"],["בגט שניצל","40₪"],["בגט מעורב","40₪"],["בגט קבב","45₪"],["בגט חזה עוף","40₪"],["בגט פרגית","40₪"]
       ]},
-      { key:"drinks", items:[
-        { he:"שתייה קלה", ar:"مشروبات غازية", en:"Soft drinks", ru:"Безалкогольные напитки", price:"10₪ / 12₪" },
+      { title: "🍟 תוספות", items: [
+        ["ציפס קטן","20₪"],["ציפס גדול","28₪"],["סלט ירקות","20₪"],["ביצה","4₪"],["כדורי פלאפל (5 יחידות)","10₪"]
       ]},
-    ];
+      { title: "🥤 שתייה", items: [
+        ["שתייה קלה","10₪ / 12₪"]
+      ]},
+      { title: "📍 מי אנחנו והמיקום", items: [
+        ["אנחנו מגישים אוכל מהיר וטרי. מחכים לכם בת״א.",""],
+        ["📍 פתיחת המיקום במפה","https://www.google.com/maps/place/%D7%97%D7%95%D7%9E%D7%95%D7%A1+%D7%92%D7%A8%D7%92%D7%99%D7%A8%D7%99%D7%9D%E2%80%AD/@32.0703077,34.8085023,14z/data=!4m7!3m6!1s0x151d4d65eaa88767:0x88a6cf2b37635201!8m2!3d32.0703077!4d34.7703935!15sChnXl9eV157XldehINeS16jXkteZ16jXmdedWhsiGdeX15XXnteV16Eg15LXqNeS15nXqNeZ152SAQpyZXN0YXVyYW50mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVU5JZDJOWFdpMW5SUkFCqgFMCggvbS8wanpwcxABMh8QASIbXnyfrkaH3Wd9xlktftX19dP4T5zicEctKblFMh0QAiIZ15fXldee15XXoSDXkteo15LXmdeo15nXneABAPoBBAgAEDs"]
+      ]},
+      { title: "🕒 שעות פעילות", items: [
+        ["ראשון","10:00–01:00"],["שני","10:00–01:00"],["שלישי","10:00–01:00"],["רביעי","10:00–01:00"],
+        ["חמישי","10:00–01:00"],["שישי","10:00–01:00"],["שבת","10:00–01:00"]
+      ]}
+    ]
+  },
+  ar: {
+    brand: "حُمُّص גרגירים",
+    woltText: "Wolt",
+    sections: [
+      { title: "🍽️ الأطباق", items: [
+        ["حمص גרגירים","30₪"],["حمص فول","30₪"],["مثلث (حمص+فول+مسابحة)","30₪"],["مسابحة","30₪"],
+        ["حمص بالفطر","36₪"],["حمص باللحم","48₪"],["شكشوكة (يشمل 2 بيض)","43₪"],["عجة (يشمل حمص)","34₪"],
+        ["كباب","60₪"],["صدر دجاج","55₪"]
+      ]},
+      { title: "🍱 وجبة عمل", items: [
+        ["طبق حمص مع بطاطس، فلافل وكولا","30₪ | حتى الساعة الخامسة"]
+      ]},
+      { title: "🥙 في الخبز", items: [
+        ["فلافل","20₪"],["شكشوكة","25₪"],["عجة","25₪"],["مسابحة","20₪"],["فول","20₪"],["حمص","20₪"],
+        ["شنسل","30₪"],["كباب","35₪"],["خبز حار","30₪"],["خبز مكس","30₪"],["خبز صدر دجاج","30₪"],["خبز فخذ دجاج","30₪"]
+      ]},
+      { title: "🥖 باغيت", items: [
+        ["باجيت سجق حار","40₪"],["باجيت شنسل","40₪"],["باجيت مكس","40₪"],["باجيت كباب","45₪"],["باجيت صدر دجاج","40₪"],["باجيت فخذ دجاج","40₪"]
+      ]},
+      { title: "🍟 إضافات", items: [
+        ["بطاطس مقلية صغيرة","20₪"],["بطاطس مقلية كبيرة","28₪"],["سلطة خضار","20₪"],["بيضة","4₪"],["كرات فلافل (5 قطع)","10₪"]
+      ]},
+      { title: "🥤 مشروبات", items: [
+        ["مشروبات غازية","10₪ / 12₪"]
+      ]},
+      { title: "📍 من نحن والموقع", items: [
+        ["نقدم طعاماً سريعاً وطازجاً. ننتظركم في تل أبيب.",""],
+        ["📍 افتح الموقع على الخريطة","https://www.google.com/maps/place/%D7%97%D7%95%D7%9E%D7%95%D7%A1+%D7%92%D7%A8%D7%92%D7%99%D7%A8%D7%99%D7%9D%E2%80%AD/@32.0703077,34.8085023,14z/data=!4m7!3m6!1s0x151d4d65eaa88767:0x88a6cf2b37635201!8m2!3d32.0703077!4d34.7703935!15sChnXl9eV157XldehINeS16jXkteZ16jXmdedWhsiGdeX15XXnteV16Eg15LXqNeS15nXqNeZ152SAQpyZXN0YXVyYW50mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVU5JZDJOWFdpMW5SUkFCqgFMCggvbS8wanpwcxABMh8QASIbXnyfrkaH3Wd9xlktftX19dP4T5zicEctKblFMh0QAiIZ15fXldee15XXoSDXkteo15LXmdeo15nXneABAPoBBAgAEDs"]
+      ]},
+      { title: "🕒 ساعات العمل", items: [
+        ["الأحد","10:00–01:00"],["الإثنين","10:00–01:00"],["الثلاثاء","10:00–01:00"],["الأربعاء","10:00–01:00"],
+        ["الخميس","10:00–01:00"],["الجمعة","10:00–01:00"],["السبت","10:00–01:00"]
+      ]}
+    ]
+  },
+  en: {
+    brand: "Hummus Gargerim",
+    woltText: "Wolt",
+    sections: [
+      { title: "🍽️ Plates", items: [
+        ["Hummus Gargerim","30₪"],["Hummus with Fava","30₪"],["Combo (Hummus+Fava+Msabaha)","30₪"],["Msabaha","30₪"],
+        ["Hummus with Mushrooms","36₪"],["Hummus with Meat","48₪"],["Shakshuka (incl. 2 eggs)","43₪"],["Omelette (incl. hummus)","34₪"],
+        ["Kebab","60₪"],["Chicken Breast","55₪"]
+      ]},
+      { title: "🍱 Business Meal", items: [
+        ["Hummus plate with fries, falafel & cola","30₪ | until 17:00"]
+      ]},
+      { title: "🥙 In Pita", items: [
+        ["Falafel","20₪"],["Shakshuka","25₪"],["Omelette","25₪"],["Msabaha","20₪"],["Fava Beans","20₪"],["Hummus","20₪"],
+        ["Schnitzel","30₪"],["Kebab","35₪"],["Spicy Pita","30₪"],["Mixed Pita","30₪"],["Chicken Breast Pita","30₪"],["Chicken Thigh Pita","30₪"]
+      ]},
+      { title: "🥖 Baguette", items: [
+        ["Spicy Merguez Baguette","40₪"],["Schnitzel Baguette","40₪"],["Mixed Baguette","40₪"],["Kebab Baguette","45₪"],["Chicken Breast Baguette","40₪"],["Chicken Thigh Baguette","40₪"]
+      ]},
+      { title: "🍟 Extras", items: [
+        ["Small Fries","20₪"],["Large Fries","28₪"],["Vegetable Salad","20₪"],["Egg","4₪"],["Falafel Balls (5 pcs)","10₪"]
+      ]},
+      { title: "🥤 Drinks", items: [
+        ["Soft drinks","10₪ / 12₪"]
+      ]},
+      { title: "📍 About & Location", items: [
+        ["We serve quick, fresh food. Find us in Tel Aviv.",""],
+        ["📍 Open location in Maps","https://www.google.com/maps/place/%D7%97%D7%95%D7%9E%D7%95%D7%A1+%D7%92%D7%A8%D7%92%D7%99%D7%A8%D7%99%D7%9D%E2%80%AD/@32.0703077,34.8085023,14z/data=!4m7!3m6!1s0x151d4d65eaa88767:0x88a6cf2b37635201!8m2!3d32.0703077!4d34.7703935!15sChnXl9eV157XldehINeS16jXkteZ16jXmdedWhsiGdeX15XXnteV16Eg15LXqNeS15nXqNeZ152SAQpyZXN0YXVyYW50mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVU5JZDJOWFdpMW5SUkFCqgFMCggvbS8wanpwcxABMh8QASIbXnyfrkaH3Wd9xlktftX19dP4T5zicEctKblFMh0QAiIZ15fXldee15XXoSDXkteo15LXmdeo15nXneABAPoBBAgAEDs"]
+      ]},
+      { title: "🕒 Opening Hours", items: [
+        ["Sunday","10:00–01:00"],["Monday","10:00–01:00"],["Tuesday","10:00–01:00"],["Wednesday","10:00–01:00"],
+        ["Thursday","10:00–01:00"],["Friday","10:00–01:00"],["Saturday","10:00–01:00"]
+      ]}
+    ]
+  },
+  ru: {
+    brand: "Хумус Гаргерим",
+    woltText: "Wolt",
+    sections: [
+      { title: "🍽️ Блюда", items: [
+        ["Хумус Гаргерим","30₪"],["Хумус с фава","30₪"],["Комбо (хумус+фава+мсабаха)","30₪"],["Мсабаха","30₪"],
+        ["Хумус с грибами","36₪"],["Хумус с мясом","48₪"],["Шакшука (2 яйца)","43₪"],["Омлет (с хумусом)","34₪"],
+        ["Кебаб","60₪"],["Куриная грудка","55₪"]
+      ]},
+      { title: "🍱 Бизнес-ланч", items: [
+        ["Тарелка хумус с фри, фалафелем и колой","30₪ | до 17:00"]
+      ]},
+      { title: "🥙 В пита", items: [
+        ["Фалафель","20₪"],["Шакшука","25₪"],["Омлет","25₪"],["Мсабаха","20₪"],["Фава","20₪"],["Хумус","20₪"],
+        ["Шницель","30₪"],["Кебаб","35₪"],["Острая пита","30₪"],["Пита микс","30₪"],["Пита с грудкой","30₪"],["Пита с бедром","30₪"]
+      ]},
+      { title: "🥖 Багет", items: [
+        ["Острый мергез багет","40₪"],["Багет шницель","40₪"],["Багет микс","40₪"],["Багет кебаб","45₪"],["Багет с грудкой","40₪"],["Багет с бедром","40₪"]
+      ]},
+      { title: "🍟 Гарниры", items: [
+        ["Картофель фри (мал.)","20₪"],["Картофель фри (бол.)","28₪"],["Овощной салат","20₪"],["Яйцо","4₪"],["Шарики фалафеля (5 шт)","10₪"]
+      ]},
+      { title: "🥤 Напитки", items: [
+        ["Газированные напитки","10₪ / 12₪"]
+      ]},
+      { title: "📍 О нас и местоположение", items: [
+        ["Мы готовим быстро и свежо. Находимся в Тель-Авиве.",""],
+        ["📍 Открыть локацию в картах","https://www.google.com/maps/place/%D7%97%D7%95%D7%9E%D7%95%D7%A1+%D7%92%D7%A8%D7%92%D7%99%D7%A8%D7%99%D7%9D%E2%80%AD/@32.0703077,34.8085023,14z/data=!4m7!3m6!1s0x151d4d65eaa88767:0x88a6cf2b37635201!8m2!3d32.0703077!4d34.7703935!15sChnXl9eV157XldehINeS16jXkteZ16jXmdedWhsiGdeX15XXnteV16Eg15LXqNeS15nXqNeZ152SAQpyZXN0YXVyYW50mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVU5JZDJOWFdpMW5SUkFCqgFMCggvbS8wanpwcxABMh8QASIbXnyfrkaH3Wd9xlktftX19dP4T5zicEctKblFMh0QAiIZ15fXldee15XXoSDXkteo15LXmdeo15nXneABAPoBBAgAEDs"]
+      ]},
+      { title: "🕒 Часы работы", items: [
+        ["Воскресенье","10:00–01:00"],["Понедельник","10:00–01:00"],["Вторник","10:00–01:00"],["Среда","10:00–01:00"],
+        ["Четверг","10:00–01:00"],["Пятница","10:00–01:00"],["Суббота","10:00–01:00"]
+      ]}
+    ]
+  }
+};
 
-    const els = {
-      brandName: document.getElementById("brandName"),
-      navHome: document.getElementById("navHome"),
-      navMenu: document.getElementById("navMenu"),
-      navOrder: document.getElementById("navOrder"),
-      navAbout: document.getElementById("navAbout"),
-      langBtn: document.getElementById("langBtn"),
-      heroTitle: document.getElementById("heroTitle"),
-      heroSubtitle: document.getElementById("heroSubtitle"),
-      ctaMenu: document.getElementById("ctaMenu"),
-      ctaOrder: document.getElementById("ctaOrder"),
-      menuHeader: document.getElementById("menuHeader"),
-      aboutHeader: document.getElementById("aboutHeader"),
-      aboutText: document.getElementById("aboutText"),
-      mapLink: document.getElementById("mapLink"),
-      phoneLink: document.getElementById("phoneLink"),
-      hoursTitle: document.getElementById("hoursTitle"),
-      hoursList: document.getElementById("hoursList"),
-      footerText: document.getElementById("footerText"),
-      sectionsWrap: document.getElementById("sections"),
-      modal: document.getElementById("langModal"),
-    };
+/* --- Helpers --- */
+const contentEl = document.getElementById('content');
+const langBtn = document.getElementById('langBtn');
+const overlay = document.getElementById('overlay');
+const dialog = document.getElementById('langDialog');
+const brandName = document.getElementById('brandName');
+const woltBtn = document.getElementById('woltBtn');
 
-    function renderSections(lang) {
-      const t = T[lang];
-      const labels = t.sections;
-      const order = ["plates","pita","baguette","extras","drinks"];
-      els.sectionsWrap.innerHTML = "";
-      order.forEach(key => {
-        const section = MENU.find(s => s.key === key);
-        if(!section) return;
-        const box = document.createElement("div");
-        box.className = "menu-section";
-        box.innerHTML = `
-          <div class="menu-section-header"><h3 style="margin:0">${ICONS[key]} ${labels[key]}</h3></div>
-          <div class="menu-list"></div>
-        `;
-        const list = box.querySelector(".menu-list");
-        section.items.forEach(item => {
-          const name = item[lang] || item.he || "";
-          const price = item.price || "";
-          const row = document.createElement("div");
-          row.className = "menu-item";
-          row.innerHTML = `<div class="item-name">${name}</div><div class="item-price">${price}</div>`;
-          list.appendChild(row);
-        });
-        els.sectionsWrap.appendChild(box);
-      });
-    }
+function openDialog(){ overlay.style.display='block'; dialog.style.display='block'; dialog.setAttribute('aria-hidden','false'); }
+function closeDialog(){ overlay.style.display='none'; dialog.style.display='none'; dialog.setAttribute('aria-hidden','true'); }
 
-    function applyLang(code){
-      const t = T[code] || T.ar;
-      document.documentElement.lang = code;
-      document.documentElement.dir = t.dir;
-      document.title = t.heroTitle + " – Menu";
+langBtn.addEventListener('click', openDialog);
+overlay.addEventListener('click', closeDialog);
+dialog.addEventListener('click', e=>{ if(e.target.classList.contains('lang-choice')) { selectLang(e.target.dataset.lang); } });
 
-      els.brandName.textContent = t.brand;
-      els.navHome.textContent = t.nav.home;
-      els.navMenu.textContent = t.nav.menu;
-      els.navOrder.textContent = t.nav.order;
-      els.navOrder.href = ORDER_URL;
-      els.navAbout.textContent = t.nav.about;
-      els.langBtn.title = t.nav.menu;
-      els.langBtn.textContent = "🌐 " + t.label;
-
-      els.heroTitle.textContent = t.heroTitle;
-      els.heroSubtitle.textContent = t.heroSubtitle;
-      els.ctaMenu.textContent = t.nav.menu;
-      els.ctaOrder.textContent = t.orderNow;
-      els.ctaOrder.href = ORDER_URL;
-
-      els.menuHeader.textContent = t.menuHeader;
-      els.aboutHeader.textContent = t.aboutHeader;
-      els.aboutText.textContent = t.aboutText;
-      els.mapLink.textContent = "📍 " + t.address;
-      els.mapLink.href = MAPS_URL;
-      els.phoneLink.textContent = "☎️ " + t.phone;
-      els.phoneLink.href = "tel:035366667";
-
-      els.hoursTitle.textContent = t.hoursTitle;
-      els.hoursList.innerHTML = t.days.map(d => (
-        `<li><span>${d}</span><span style="font-weight:600">${t.hoursRange}</span></li>`
-      )).join("");
-
-      els.footerText.textContent = t.footer;
-
-      renderSections(code);
-    }
-
-    function openModal(){ els.modal.style.display = "flex"; }
-    function closeModal(){ els.modal.style.display = "none"; }
-
-    const saved = localStorage.getItem("gg_lang");
-    const initial = saved || "ar";
-    applyLang(initial);
-    if(!saved){ openModal(); }
-
-    els.langBtn.addEventListener("click", openModal);
-    els.modal.addEventListener("click", (e)=>{ if(e.target === els.modal) closeModal(); });
-    els.modal.querySelectorAll("button[data-lang]").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const code = btn.getAttribute("data-lang");
-        localStorage.setItem("gg_lang", code);
-        applyLang(code);
-        closeModal();
-      });
+function render(lang){
+  const d = DATA[lang] || DATA.he;
+  // set brand and wolt label
+  brandName.textContent = d.brand;
+  woltBtn.textContent = d.woltText;
+  woltBtn.href = "https://wolt.com/he/isr/tel-aviv/restaurant/hummus-gargerim?utm_source=googlemapreserved&utm_campaign=hummus-gargerim&utm_content=64ae8b9b04e67c0d9c4caaa6&rwg_token=ACgRB3e3AEvanF_rf0aocU0TZqf-A0bXcjBDAMHo0uH5Qnr0ThUuNAwovlcu_ifLs-Ciqhk84FvJysHJSlknjposiHsWGfWYdXJTmUMkLgbkZ5fIGKYBXQQ%3D";
+  let out = '';
+  d.sections.forEach(sec => {
+    out += `<section class="menu-section"><h2 class="section-title">${sec.title}</h2>`;
+    sec.items.forEach(item => {
+      const name = item[0] || '';
+      const priceOrLink = item[1] || '';
+      if(sec.title.includes('📍') || sec.title.includes('من') || sec.title.includes('About')){
+        // about section: if it's a map link show clickable
+        if(priceOrLink && priceOrLink.startsWith('http')){
+          out += `<div class="menu-item"><div class="small">${name}</div><div><a href="${priceOrLink}" target="_blank">${priceOrLink.includes('google')? '🔗' : '🔗'}</a></div></div>`;
+        } else {
+          out += `<div class="menu-item"><div class="small">${name}</div><div class="small">${priceOrLink}</div></div>`;
+        }
+      } else if(sec.title.includes('🕒') || sec.title.includes('ساعات') || sec.title.includes('Hours')){
+        out += `<div class="menu-item"><div>${name}</div><div style="font-weight:700">${priceOrLink}</div></div>`;
+      } else {
+        out += `<div class="menu-item"><div>${name}</div><div style="font-weight:800">${priceOrLink}</div></div>`;
+      }
     });
-  </script>
+    out += `</section>`;
+  });
+  contentEl.innerHTML = out;
+}
+
+function selectLang(code){
+  localStorage.setItem('hummus_lang', code);
+  render(code);
+  closeDialog();
+}
+
+// init
+const saved = localStorage.getItem('hummus_lang') || 'he';
+render(saved);
+brandName.textContent = DATA[saved].brand;
+woltBtn.textContent = DATA[saved].woltText;
+
+// add explicit listeners to language choices (for accessibility)
+document.querySelectorAll('.lang-choice').forEach(el=>{
+  el.addEventListener('click', ()=> selectLang(el.dataset.lang));
+});
+</script>
 </body>
 </html>
