@@ -7,29 +7,53 @@
 <style>
 :root{
   --orange:#ff7a00; --gold:#c5a13e; --black:#000; --white:#fff; --blue:#00AEEF;
-  --muted: #666;
+  --muted:#b9b9b9;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--white);color:#111;line-height:1.4}
-header{background:var(--black);border-bottom:3px solid var(--gold);position:sticky;top:0;z-index:60}
+/* خلفية متحركة فخمة */
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:#111;
+  line-height:1.45;
+  background: linear-gradient(-45deg, #0b0b0b, #ff7a00, #111111, #c68a25);
+  background-size: 400% 400%;
+  animation: grad 18s ease infinite;
+}
+@keyframes grad{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+/* Layers for readability */
+.page{
+  min-height:100vh;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(2px);
+}
+header{
+  background: rgba(0,0,0,0.86);
+  border-bottom:3px solid var(--gold);
+  position:sticky; top:0; z-index:60;
+}
 .topbar{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:12px}
 .lang-btn{background:var(--white);border:2px solid var(--orange);padding:8px 12px;border-radius:20px;cursor:pointer;font-weight:700}
-.brand-name{flex:1;text-align:center;color:var(--orange);font-weight:800;font-size:1.6rem}
+.brand-name{flex:1;text-align:center;color:var(--white);font-weight:900;font-size:1.6rem;letter-spacing:.2px}
 .wolt-btn{background:var(--blue);color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:800;display:inline-block}
 main{max-width:1200px;margin:28px auto;padding:0 16px}
-h2.section-title{color:var(--orange);font-size:1.2rem;margin:24px 0;border-bottom:2px solid var(--gold);padding-bottom:8px;text-align:right}
-.menu-section{border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:8px;margin-bottom:18px;background:#fff}
-.menu-item{display:flex;justify-content:space-between;padding:8px 10px;border-bottom:1px dashed rgba(0,0,0,.06);align-items:center}
+h2.section-title{color:var(--orange);font-size:1.15rem;margin:24px 0;border-bottom:2px solid var(--gold);padding-bottom:8px;text-align:right}
+.menu-section{border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:8px;margin-bottom:18px;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+.menu-item{display:flex;justify-content:space-between;padding:8px 10px;border-bottom:1px dashed rgba(0,0,0,.08);align-items:center}
 .menu-item:last-child{border-bottom:none}
-.small{font-size:0.95rem;color:var(--muted)}
-.about, .hours{margin-top:8px;padding:12px;border-radius:10px;background:#fafafa;border:1px solid rgba(0,0,0,.04)}
-.footer{background:var(--black);color:var(--gold);text-align:center;padding:16px;font-weight:700}
+.small{font-size:0.95rem;color:#555}
+.footer{background:rgba(0,0,0,0.9);color:var(--gold);text-align:center;padding:18px;font-weight:700;border-top:2px solid #1a1a1a}
 .footer a{color:var(--gold);text-decoration:none}
+.badge{display:inline-block;background:var(--orange);color:#000;padding:2px 8px;border-radius:999px;font-weight:800;font-size:.8rem}
 
 /* modal */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:120}
 .dialog{display:none;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border-radius:14px;padding:18px;z-index:130;min-width:300px;max-width:90%;box-shadow:0 8px 30px rgba(0,0,0,.35)}
-.dialog h3{text-align:center;margin:0 0 12px;color:var(--black)}
+.dialog h3{text-align:center;margin:0 0 12px;color:#111}
 .lang-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .lang-choice{padding:10px;border-radius:8px;border:2px solid var(--orange);text-align:center;cursor:pointer;font-weight:700}
 .lang-choice:hover{background:var(--orange);color:#fff}
@@ -43,6 +67,7 @@ h2.section-title{color:var(--orange);font-size:1.2rem;margin:24px 0;border-botto
 </style>
 </head>
 <body>
+<div class="page">
 <header>
   <div class="topbar">
     <button id="langBtn" class="lang-btn">🌐 שפה</button>
@@ -52,12 +77,13 @@ h2.section-title{color:var(--orange);font-size:1.2rem;margin:24px 0;border-botto
 </header>
 
 <main id="content">
-  <!-- content injected by JS -->
+  <!-- المحتوى يُحقن عبر JS حسب اللغة -->
 </main>
 
 <footer class="footer">
-  <a id="discordLink" href="https://discord.gg/rfhQ4spF33" target="_blank">© 2025 חומוס גרגירים – All Rights Reserved</a>
+  <div>© <span id="yr"></span> חומוס גרגירים – All Rights Reserved</div>
 </footer>
+</div>
 
 <div class="overlay" id="overlay"></div>
 <div class="dialog" id="langDialog" role="dialog" aria-modal="true" aria-hidden="true">
@@ -71,7 +97,7 @@ h2.section-title{color:var(--orange);font-size:1.2rem;margin:24px 0;border-botto
 </div>
 
 <script>
-/* --- Data: translations for four languages --- */
+/* ---- DATA: أربع لغات تمامًا كما أرسلت، مع إصلاح قسم פיתה في العبرية ---- */
 const DATA = {
   he: {
     brand: "חומוס גרגירים",
@@ -80,15 +106,13 @@ const DATA = {
       { title: "🍽️ בצלחות", items: [
         ["חומוס גרגרים","30₪"],["חומוס פול","30₪"],["משולש (חומוס+פול+מסבחה)","30₪"],["מסבחה","30₪"],
         ["חומוס פטריות","36₪"],["חומוס בשר","48₪"],["שקשוקה (כולל 2 ביצים)","43₪"],["חביתה (כולל חומוס)","34₪"],
-        ["קבב","60₪"],["חזה עוף","55₪"]
+        ["קבב","60₪"],["חזה עוף","55₪"],["צלחת חומוס סביח עם ביצה","38₪"],["סלט בריאות עם גרגירי חומוס וביצה וטחינה בצד","35₪"]
       ]},
       { title: "🍱 עסקית", items: [
-        ["צלחת חומוס עם ציפס פלאפל וקולה","30₪ | עד שעה חמש"]
+        ["צלחת חומוס עם ציפס פלאפל וקולה","45₪ | עד שעה חמש"]
       ]},
-      { title: "🥙 בפיתה", items: [
-        ["פלאפל","20₪"],["שקשוקה","25₪"],["חביתה","25₪"],["מסבחה","20₪"],["פול","20₪"],["חומוס","20₪"],
-        ["שניצל","30₪"],["קבב","35₪"],["פיתה חריפות","30₪"],["פיתה מעורב","30₪"],["פיתה חזה עוף","30₪"],["פיתה פרגית","30₪"]
-      ]},
+      /* ✅ إصلاح هنا: قسم פיתה مع الصنف الجديد פיתה סביח 26₪ وبدون أقواس زائدة */
+      { title: "🥙 פיתה", items: [["20₪","פלאפל"],["25₪","שקשוקה"],["25₪","חביתה"],["20₪","מסבחה"],["20₪","פול"],["20₪","חומוס"],["26₪","פיתה סביח"],["30₪","שניצל"],["35₪","קבב"],["30₪","פיתה חריפות"],["30₪","פיתה חזה עוף"],["30₪","פיתה בשר טחון"],["30₪","פיתה חמושקה"],["30₪","פיתה גרגירים"]] },
       { title: "🥖 בגט", items: [
         ["בגט חריפות מרגז","40₪"],["בגט שניצל","40₪"],["בגט מעורב","40₪"],["בגט קבב","45₪"],["בגט חזה עוף","40₪"],["בגט פרגית","40₪"]
       ]},
@@ -99,7 +123,7 @@ const DATA = {
         ["שתייה קלה","10₪ / 12₪"]
       ]},
       { title: "📍 מי אנחנו והמיקום", items: [
-        ["אנחנו מגישים אוכל מהיר וטרי. מחכים לכם בת״א.",""],
+        ["מחכים לכם באלנבי 47 ת״א.",""],
         ["📍 פתיחת המיקום במפה","https://www.google.com/maps/place/%D7%97%D7%95%D7%9E%D7%95%D7%A1+%D7%92%D7%A8%D7%92%D7%99%D7%A8%D7%99%D7%9D%E2%80%AD/@32.0703077,34.8085023,14z/data=!4m7!3m6!1s0x151d4d65eaa88767:0x88a6cf2b37635201!8m2!3d32.0703077!4d34.7703935!15sChnXl9eV157XldehINeS16jXkteZ16jXmdedWhsiGdeX15XXnteV16Eg15LXqNeS15nXqNeZ152SAQpyZXN0YXVyYW50mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVU5JZDJOWFdpMW5SUkFCqgFMCggvbS8wanpwcxABMh8QASIbXnyfrkaH3Wd9xlktftX19dP4T5zicEctKblFMh0QAiIZ15fXldee15XXoSDXkteo15LXmdeo15nXneABAPoBBAgAEDs"]
       ]},
       { title: "🕒 שעות פעילות", items: [
@@ -205,7 +229,7 @@ const DATA = {
       ]},
       { title: "📍 О нас и местоположение", items: [
         ["Мы готовим быстро и свежо. Находимся в Тель-Авиве.",""],
-        ["📍 Открыть локацию в картах","https://www.google.com/maps/place/%D7%97%D7%95%D7%9E%D7%95%D7%A1+%D7%92%D7%A8%D7%92%D7%99%D7%A8%D7%99%D7%9D%E2%80%AD/@32.0703077,34.8085023,14z/data=!4m7!3m6!1s0x151d4d65eaa88767:0x88a6cf2b37635201!8m2!3d32.0703077!4d34.7703935!15sChnXl9eV157XldehINeS16jXkteZ16jXmdedWhsiGdeX15XXnteV16Eg15LXqNeS15nXqNeZ152SAQpyZXN0YXVyYW50mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVU5JZDJOWFdpMW5SUkFCqgFMCggvbS8wanpwcxABMh8QASIbXnyfrkaH3Wd9xlktftX19dP4T5zicEctKblFMh0QAiIZ15fXldee15XXoSDXkteo15LXmdeo15nXneABAPoBBAgAEDs"]
+        ["📍 Открыть локацию в картах","https://www.google.com/maps/place/%D7%97%D7%95%D7%9E%D7%95%D7%A1+%D7%92%D7%A8%D7%92%D7%99%D7%A8%D7%99%D7%9D%E2%80%AD/@32.0703077,34.8085023,14z/data=!4m7!3m6!1s0x151d4d65eaa88767:0x88a6cf2b37635201!8m2!3d32.0703077!4d34.7703935!15sChnXl9eV157XldehINeS16jXkteZ16jXmdedWhsiGdeX15XXnteV16Eg15LXqNeS15nXqNeZ152SAQpyZXN0YXVyYW50mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVU5JZDJOWFdpMW5SUkFCqgFMCggvbS8wanpwcxABMh8QASIbXnyfrkaH3Wd9xlktftX19dП4T5zicEctKblFMh0QAiIZ15fXldee15XXoSDXkteo15LXmdeo15nXneABAPoBBAgAEDs"]
       ]},
       { title: "🕒 Часы работы", items: [
         ["Воскресенье","10:00–01:00"],["Понедельник","10:00–01:00"],["Вторник","10:00–01:00"],["Среда","10:00–01:00"],
@@ -232,9 +256,9 @@ dialog.addEventListener('click', e=>{ if(e.target.classList.contains('lang-choic
 
 function render(lang){
   const d = DATA[lang] || DATA.he;
-  // set brand and wolt label
+  // set brand and Wolt
   brandName.textContent = d.brand;
-  woltBtn.textContent = d.woltText;
+  woltBtn.textContent = d.woltText || 'Wolt';
   woltBtn.href = "https://wolt.com/he/isr/tel-aviv/restaurant/hummus-gargerim?utm_source=googlemapreserved&utm_campaign=hummus-gargerim&utm_content=64ae8b9b04e67c0d9c4caaa6&rwg_token=ACgRB3e3AEvanF_rf0aocU0TZqf-A0bXcjBDAMHo0uH5Qnr0ThUuNAwovlcu_ifLs-Ciqhk84FvJysHJSlknjposiHsWGfWYdXJTmUMkLgbkZ5fIGKYBXQQ%3D";
   let out = '';
   d.sections.forEach(sec => {
@@ -243,16 +267,15 @@ function render(lang){
       const name = item[0] || '';
       const priceOrLink = item[1] || '';
       if(sec.title.includes('📍') || sec.title.includes('من') || sec.title.includes('About')){
-        // about section: if it's a map link show clickable
-        if(priceOrLink && priceOrLink.startsWith('http')){
-          out += `<div class="menu-item"><div class="small">${name}</div><div><a href="${priceOrLink}" target="_blank">${priceOrLink.includes('google')? '🔗' : '🔗'}</a></div></div>`;
+        if(priceOrLink && typeof priceOrLink === 'string' && priceOrLink.startsWith('http')){
+          out += `<div class="menu-item"><div class="small">${name}</div><div><a href="${priceOrLink}" target="_blank">🔗</a></div></div>`;
         } else {
           out += `<div class="menu-item"><div class="small">${name}</div><div class="small">${priceOrLink}</div></div>`;
         }
       } else if(sec.title.includes('🕒') || sec.title.includes('ساعات') || sec.title.includes('Hours')){
         out += `<div class="menu-item"><div>${name}</div><div style="font-weight:700">${priceOrLink}</div></div>`;
       } else {
-        out += `<div class="menu-item"><div>${name}</div><div style="font-weight:800">${priceOrLink}</div></div>`;
+        out += `<div class="menu-item"><div>${name}</div><div class="badge">${priceOrLink}</div></div>`;
       }
     });
     out += `</section>`;
@@ -267,12 +290,13 @@ function selectLang(code){
 }
 
 // init
+document.getElementById('yr').textContent = new Date().getFullYear();
 const saved = localStorage.getItem('hummus_lang') || 'he';
 render(saved);
 brandName.textContent = DATA[saved].brand;
-woltBtn.textContent = DATA[saved].woltText;
+woltBtn.textContent = DATA[saved].woltText || 'Wolt';
 
-// add explicit listeners to language choices (for accessibility)
+// extra listeners
 document.querySelectorAll('.lang-choice').forEach(el=>{
   el.addEventListener('click', ()=> selectLang(el.dataset.lang));
 });
